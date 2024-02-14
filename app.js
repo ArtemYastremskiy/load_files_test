@@ -1,27 +1,27 @@
 const fileInput = document.querySelector("#file");
 const submit = document.querySelector("#submit");
-const image = document.querySelector("#img");
+const img = document.querySelector("#img");
 
-submit.addEventListener('click', () => {
+submit.addEventListener("click", () => {
     const pic = fileInput.files && fileInput.files[0];
 
     var img = new Image();
 
     img.src = window.URL.createObjectURL(pic);
 
-    img.onload = function() {
+    img.onload = function () {
         var width = img.naturalWidth,
-            heigth = img.naturalHeight;
-        console.log(width, heigth);
-        window.URL.revokeObjectURL(image.src);
+            height = img.naturalHeight;
+        console.log(width, height);
+        window.URL.revokeObjectURL(img.src);
 
-        var c = document.querySelector("canvas");
+        var c = document.getElementById("canvas");
         c.width = width;
-        c.height = heigth;
-        var ctx = c.getContext('2d');
+        c.height = height;
+        var ctx = c.getContext("2d");
         ctx.drawImage(img, 0, 0);
-        var img_link = canvas.toDataUrl('image/jpeg');
-        console.log(img_link);
-        jpg.src = img_link        
+        var img_link = canvas.toDataURL("image/jpeg");
+        console.log(img_link)
+        jpg.src = img_link;
     };
 });
